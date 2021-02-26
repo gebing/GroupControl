@@ -1,0 +1,7 @@
+{
+  "interaction": {
+    "type": "script",
+    "on_change": "reload",
+    "path": "${CODE_PATH}/some.js"
+  }
+}
