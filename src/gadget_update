@@ -38,4 +38,4 @@ download "android-arm64" "lib-tweak64"
 # 保存当前版本号到源码目录
 echo $VERSION > $GADGET_PATH/lib-tweak.version
 
-echo Install 'lib-tweak32.so' and 'lib-tweak64.so' success.
+echo Update 'lib-tweak32.so' and 'lib-tweak64.so' success.
