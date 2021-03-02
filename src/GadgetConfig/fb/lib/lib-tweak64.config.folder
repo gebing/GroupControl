@@ -1,7 +1,7 @@
 {
   "interaction": {
     "type": "script-directory",
-    "path": "${CODE_PATH}",
+    "path": "/sdcard/onesight/tweak/code",
     "on_change": "rescan"
   }
 }

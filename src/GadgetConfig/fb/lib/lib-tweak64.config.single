@@ -2,6 +2,6 @@
   "interaction": {
     "type": "script",
     "on_change": "reload",
-    "path": "${CODE_PATH}/some.js"
+    "path": "/sdcard/onesight/tweak/code/main.js"
   }
 }
