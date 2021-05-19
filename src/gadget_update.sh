@@ -1,4 +1,13 @@
 #!/bin/sh
+# 获取脚本目录
+PROJECT_HOME=$(cd "$(dirname "$0")"; pwd)
+TARGET_PATH=./GadgetBinary
+# "-help": 显示帮助信息并退出
+if [ "$1" == "help" -o "$1" == "-h" -o "$1" == "-help" ]; then
+  echo "$0 -help     Show this help message."
+  echo "$0 [version] Download frdia gadget from github into '$TARGET_PATH'."
+  exit -1
+fi
 # 下载、解压文件，并拷贝到源码目录下
 function download() {
   src=$1
@@ -15,10 +24,7 @@ function download() {
     echo Decompress "$dst.so.xz" failed!
     exit 2
   fi
-  if [ "$GADGET_PATH" == "$PROJECT_HOME" ]; then
-    return
-  fi
-  mv -f "$dst.so" $GADGET_PATH/
+  mv -f "$dst.so" "$PROJECT_HOME/$TARGET_PATH"
   if [ $? -ne 0 ]; then
     rm -f "$dst.so"
     echo Move "$dst.so" failed!
@@ -26,9 +32,7 @@ function download() {
   fi
 }
 
-# 获取脚本目录和下载版本号
-PROJECT_HOME=$(cd "$(dirname "$0")"; pwd)
-GADGET_PATH=$PROJECT_HOME/GadgetBinary
+# 下载版本号
 if [ $1 ]; then VERSION=$1; else VERSION=$(python3 -m pip install frida --upgrade > /dev/null && frida --version); fi
 
 # 依次下载相关文件
@@ -36,6 +40,6 @@ download "android-arm" "lib-tweak32"
 download "android-arm64" "lib-tweak64"
 
 # 保存当前版本号到源码目录
-echo $VERSION > $GADGET_PATH/lib-tweak.version
+echo $VERSION > "$PROJECT_HOME/$TARGET_PATH/lib-tweak.version"
 
 echo Update 'lib-tweak32.so' and 'lib-tweak64.so' success.
