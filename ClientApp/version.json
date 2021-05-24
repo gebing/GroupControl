@@ -1,0 +1,7 @@
+{
+  "versionName": "1.0.0",
+  "versionCode": 10000,
+  "updateForce": false,
+  "updateMessage": "初次发布。",
+  "downloadUrl": "https://cdn.jsdelivr.net/gh/gebing/GroupControl@master/ClientApp/ClientApp.apk"
+}
